@@ -1,0 +1,52 @@
+# ==============================================================================
+# Script: OnLogoff.ps1
+# Description: Tarefa executada ao fazer logoff do Windows para limpeza profunda.
+# ==============================================================================
+
+. "$PSScriptRoot\..\Core\Config.ps1"
+. "$PSScriptRoot\..\Core\Logging.ps1"
+
+Write-Log -Message "Iniciando tarefa agendada: OnLogoff (Encerramento de Sessão)." -Level "INFO"
+
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "        INICIANDO LIMPEZA DE LOGOFF     " -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
+
+# 1. Reset dos Navegadores (utiliza o script dedicado da pasta Tasks)
+$resetBrowserScript = "$PSScriptRoot\ResetBrowser.ps1"
+
+if (Test-Path -Path $resetBrowserScript) {
+    Write-Host "`n-> Resetando Navegadores..." -ForegroundColor Cyan
+    try {
+        & $resetBrowserScript
+    }
+    catch {
+        Write-Log -Message "Erro ao executar ResetBrowser no Logoff: $($_.Exception.Message)" -Level "ERROR"
+        Write-Host "[FAIL] Falha ao resetar navegadores." -ForegroundColor Red
+    }
+}
+else {
+    Write-Log -Message "Script ResetBrowser não encontrado em $resetBrowserScript" -Level "WARNING"
+    Write-Host "[SKIP] Script ResetBrowser não localizado." -ForegroundColor Yellow
+}
+
+# 2. Limpeza Geral (Downloads e Temp via ResetLab)
+$resetLabScript = "$PSScriptRoot\..\Maintenance\ResetLab.ps1"
+
+if (Test-Path -Path $resetLabScript) {
+    Write-Host "`n-> Limpando Arquivos Locais (Downloads/Temp)..." -ForegroundColor Cyan
+    try {
+        & $resetLabScript
+    }
+    catch {
+        Write-Log -Message "Erro ao executar ResetLab no Logoff: $($_.Exception.Message)" -Level "ERROR"
+        Write-Host "[FAIL] Falha ao limpar arquivos locais." -ForegroundColor Red
+    }
+}
+else {
+    Write-Log -Message "Script ResetLab não encontrado em $resetLabScript" -Level "WARNING"
+    Write-Host "[SKIP] Script ResetLab não localizado." -ForegroundColor Yellow
+}
+
+Write-Log -Message "Tarefa OnLogoff finalizada com sucesso." -Level "INFO"
+Write-Host "`n[ OK ] Tarefa OnLogoff concluída." -ForegroundColor Green
