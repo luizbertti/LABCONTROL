@@ -1,0 +1,13 @@
+{
+    "Project": "LABCONTROL",
+    "Version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0,
+        "Build": 1
+    },
+    "Stage": "Development",
+    "Author": "Luiz Henrique Bertti de Azevedo",
+    "PowerShell": "5.1",
+    "LastUpdate": "2026-08-06"
+}

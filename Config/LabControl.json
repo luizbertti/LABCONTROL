@@ -1,0 +1,24 @@
+{
+    "Project": {
+        "Name": "LABCONTROL",
+        "Language": "pt-BR"
+    },
+
+    "Paths": {
+        "ProjectRoot": "C:\\LABCONTROL",
+        "DataRoot": "C:\\LABCONTROL_DATA",
+
+        "Backup": "C:\\LABCONTROL_DATA\\Backup",
+        "Config": "C:\\LABCONTROL_DATA\\Config",
+        "Logs": "C:\\LABCONTROL_DATA\\Logs",
+        "Runtime": "C:\\LABCONTROL_DATA\\Runtime",
+        "Templates": "C:\\LABCONTROL_DATA\\Templates",
+        "Temp": "C:\\LABCONTROL_DATA\\Temp"
+    },
+
+    "Logging": {
+        "Enabled": true,
+        "LogLevel": "Information",
+        "File": "C:\\LABCONTROL_DATA\\Logs\\LabControl.log"
+    }
+}

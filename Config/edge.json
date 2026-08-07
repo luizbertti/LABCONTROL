@@ -1,0 +1,24 @@
+{
+    "Enabled": true,
+
+    "Name": "Microsoft Edge",
+
+    "Version": {
+        "Schema": 1
+    },
+
+    "Profile": {
+        "Template": "C:\\LABCONTROL_DATA\\Templates\\Edge",
+        "Runtime": "C:\\LABCONTROL_DATA\\Runtime\\Edge"
+    },
+
+    "Downloads": {
+        "ClearOnExit": true
+    },
+
+    "Policies": {
+        "AllowProfileCreation": false,
+        "AllowDownloads": true,
+        "ClearProfileOnExit": true
+    }
+}

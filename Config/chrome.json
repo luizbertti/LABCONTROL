@@ -1,0 +1,24 @@
+{
+    "Enabled": true,
+
+    "Name": "Google Chrome",
+
+    "Version": {
+        "Schema": 1
+    },
+
+    "Profile": {
+        "Template": "C:\\LABCONTROL_DATA\\Templates\\Chrome",
+        "Runtime": "C:\\LABCONTROL_DATA\\Runtime\\Chrome"
+    },
+
+    "Downloads": {
+        "ClearOnExit": true
+    },
+
+    "Policies": {
+        "AllowProfileCreation": false,
+        "AllowDownloads": true,
+        "ClearProfileOnExit": true
+    }
+}
