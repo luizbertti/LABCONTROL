@@ -48,5 +48,28 @@ else {
     Write-Host "[SKIP] Script ResetLab não localizado." -ForegroundColor Yellow
 }
 
+# ==============================================================================
+# NOVA PARTE ADICIONADA: 3. Limpeza do Workspace (Papel de Parede e Pastas)
+# ==============================================================================
+$resetWorkspaceScript = "$PSScriptRoot\..\Maintenance\ResetWorkspace.ps1"
+
+if (Test-Path -Path $resetWorkspaceScript) {
+    Write-Host "`n-> Limpando Workspace (Pastas e Papel de Parede)..." -ForegroundColor Cyan
+    try {
+        & $resetWorkspaceScript
+    }
+    catch {
+        Write-Log -Message "Erro ao executar ResetWorkspace no Logoff: $($_.Exception.Message)" -Level "ERROR"
+        Write-Host "[FAIL] Falha ao limpar o Workspace." -ForegroundColor Red
+    }
+}
+else {
+    Write-Log -Message "Script ResetWorkspace não encontrado em $resetWorkspaceScript" -Level "WARNING"
+    Write-Host "[SKIP] Script ResetWorkspace não localizado." -ForegroundColor Yellow
+}
+# ==============================================================================
+# FIM DA NOVA PARTE
+# ==============================================================================
+
 Write-Log -Message "Tarefa OnLogoff finalizada com sucesso." -Level "INFO"
 Write-Host "`n[ OK ] Tarefa OnLogoff concluída." -ForegroundColor Green
