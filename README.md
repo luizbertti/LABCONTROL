@@ -1,34 +1,36 @@
+*Leia isso em [Português](README.pt-br.md)*
+
 # LABCONTROL 🚀
 
-O **LABCONTROL** é um sistema automatizado, desenvolvido em PowerShell, focado no gerenciamento e higienização de computadores em laboratórios educacionais. 
+**LABCONTROL** is an automated system developed in PowerShell, focused on managing and sanitizing computers in educational laboratories. 
 
-Seu principal objetivo é garantir que cada aluno encontre um ambiente de sistema e navegação (Chrome/Edge) completamente limpo, estéril e padronizado, independentemente do que o usuário anterior tenha feito.
+Its main objective is to ensure that each student finds a completely clean, sterile, and standardized system and browsing environment (Chrome/Edge), regardless of what the previous user did.
 
-## ⚙️ Como Funciona?
+## ⚙️ How it Works?
 
-O sistema atua em três frentes principais:
-1. **Launchers Efêmeros:** Os navegadores não rodam a partir de seus perfis padrão. O sistema cria "clones" temporários (`Runtime`) baseados em um molde intocável (`Templates`).
-2. **Manutenção Automática:** Limpeza profunda de caches, arquivos temporários e pasta de Downloads.
-3. **Gatilhos de Sessão (Tasks):** As rotinas de limpeza são acionadas silenciosamente pelo Windows nos seguintes momentos:
-   - Ao iniciar a máquina (`OnLogon`).
-   - Durante a madrugada (`DailyCleanup`).
-   - Quando o notebook é bloqueado ou a tampa é fechada (`OnLogoff / Lock`).
+The system operates on three main fronts:
+1. **Ephemeral Launchers:** Browsers do not run from their default profiles. The system creates temporary "clones" (`Runtime`) based on an untouchable mold (`Templates`).
+2. **Automated Maintenance:** Deep cleaning of caches, temporary files, and the Downloads folder.
+3. **Session Triggers (Tasks):** Cleaning routines are triggered silently by Windows at the following times:
+   - Upon machine startup (`OnLogon`).
+   - During the night (`DailyCleanup`).
+   - When the notebook is locked or the lid is closed (`OnLogoff / Lock`).
 
-## 📁 Estrutura de Diretórios
+## 📁 Directory Structure
 
-- `Scripts/Core/`: Módulos base (Logging, Configurações, Manipulação de Processos).
-- `Scripts/Launchers/`: Atalhos inteligentes que preparam e abrem os navegadores.
-- `Scripts/Maintenance/`: Motores de limpeza (Downloads, Temp, Backup e Update de Templates).
-- `Scripts/Tasks/`: Gatilhos agendados no Windows que chamam as manutenções.
-- `Scripts/Install/`: Instalador automatizado para novas máquinas.
+- `Scripts/Core/`: Base modules (Logging, Configuration, Process Management).
+- `Scripts/Launchers/`: Smart shortcuts that prepare and open the browsers.
+- `Scripts/Maintenance/`: Cleaning engines (Downloads, Temp, Backup, and Template Update).
+- `Scripts/Tasks/`: Scheduled triggers in Windows that call the maintenance scripts.
+- `Scripts/Install/`: Automated installer for new machines.
 
-*Nota: Os dados em execução, templates e logs são armazenados em uma pasta local (`C:\LABCONTROL_DATA`), que é ignorada pelo Git para proteger informações sensíveis.*
+*Note: Runtime data, templates, and logs are stored in a local folder (`C:\LABCONTROL_DATA`), which is ignored by Git to protect sensitive information.*
 
-## 🛠️ Instalação (Nova Máquina)
+## 🛠️ Installation (New Machine)
 
-Para implementar o LABCONTROL em um novo computador do laboratório:
-1. Clone este repositório na máquina.
-2. Abra o **PowerShell como Administrador**.
-3. Execute o script mestre de instalação:
+To deploy LABCONTROL on a new lab computer:
+1. Clone this repository on the machine.
+2. Open **PowerShell as Administrator**.
+3. Run the master installation script:
    ```powershell
    .\Scripts\Install\InstallLab.ps1
