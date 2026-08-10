@@ -43,3 +43,10 @@ Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "   INSTALACAO DO LABCONTROL CONCLUIDA   " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "A maquina esta pronta para o uso dos alunos." -ForegroundColor Green
+# Lista dos scripts de instalacao na ordem correta
+$scriptsToRun = @(
+    "$PSScriptRoot\CreateFolders.ps1",
+    "$PSScriptRoot\OptimizeBrowsers.ps1",
+    "$PSScriptRoot\CreateShortcuts.ps1",
+    "$PSScriptRoot\RegisterTask.ps1"
+)
