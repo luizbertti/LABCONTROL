@@ -18,7 +18,8 @@ $blockedSites = @(
     "crazygames.com",
     "discord.com",
     "https://www.instagram.com/",
-    "https://www.facebook.com/"
+    "https://www.facebook.com/",
+    "https://www.myinstants.com/"
 )
 
 $edgeBlocklistPath = "HKLM:\SOFTWARE\Policies\Microsoft\Edge\URLBlocklist"

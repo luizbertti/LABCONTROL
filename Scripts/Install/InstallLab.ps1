@@ -47,6 +47,9 @@ Write-Host "A maquina esta pronta para o uso dos alunos." -ForegroundColor Green
 $scriptsToRun = @(
     "$PSScriptRoot\CreateFolders.ps1",
     "$PSScriptRoot\OptimizeBrowsers.ps1",
+    "$PSScriptRoot\WebFilter.ps1",
+    "$PSScriptRoot\LockSystem.ps1",
+    "$PSScriptRoot\BlockExecutables.ps1",
     "$PSScriptRoot\CreateShortcuts.ps1",
     "$PSScriptRoot\RegisterTask.ps1"
 )
