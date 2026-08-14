@@ -73,11 +73,56 @@ Write-Host "`n-> Restaurando bloqueios de internet para a proxima sessao..." -Fo
 
 try {
     $blockedSites = @(
-        "poki.com", "roblox.com", "clickjogos.com.br", "friv.com",
-        "crazygames.com", "kizi.com", "ojogos.com.br", "now.gg",
-        "discord.com", "web.whatsapp.com", "instagram.com", "tiktok.com",
-        "twitter.com", "x.com", "twitch.tv",
-        "croxyproxy.com", "blockaway.net", "proxysite.com", "hide.me"
+        #Jogos
+        "poki.com",
+        "clickjogos.com.br", 
+        "friv.com",
+        "crazygames.com", 
+        "kizi.com", 
+        "ojogos.com.br", 
+        "now.gg",
+        "epicgames.com",
+        "ea.com",
+        "warthunder.com",
+        "jogos360.com.br",
+        "1001jogos.com.br",
+        "minijogos.com.br",
+        "playstation.com",
+        "xbox.com",
+        "playhop.com",
+        "steampowered.com",
+        "steamcommunity.com",
+        "blizzard.com",
+        "riotgames.com",
+        "gog.com",
+        "ubisoft.com",
+        "minecraft.net",
+        "roblox.com",
+        "fortnite.com",
+        "itch.io",
+        "slither.io",
+        "kongregate.com",
+        "armorgames.com",
+        "jogosfas.com",
+        
+
+
+
+
+        #Redes Sociais
+        "https://discord.com/", 
+        "https://web.whatsapp.com/", 
+        "https://www.instagram.com/", 
+        "https://www.tiktok.com/",
+        "twitter.com", 
+        "https://x.com/", 
+        "https://www.twitch.tv/",
+
+        #Proxys
+        "https://www.croxyproxy.com/", 
+        "https://www.blockaway.net/", 
+        "https://www.proxysite.com/", 
+        "https://hide.me/pt/"
     )
 
     $edgeGlobal = "HKLM:\SOFTWARE\Policies\Microsoft\Edge\URLBlocklist"
