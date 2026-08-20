@@ -106,6 +106,28 @@ if (Test-Path $desktopPath) {
     }
 }
 
+# ==============================================================================
+# RESTAURACAO DO CURSOR DO MOUSE (WINDOWS)
+# ==============================================================================
+Write-Host "`n-> Restaurando cursor do mouse para o padrao do Windows..." -ForegroundColor Cyan
+
+try {
+    # Apaga as customizacoes de cursor do usuario atual
+    $cursorPath = "HKCU:\Control Panel\Cursors"
+    if (Test-Path $cursorPath) {
+        Remove-ItemProperty -Path $cursorPath -Name * -ErrorAction SilentlyContinue
+    }
+    
+    # Força o esquema padrão
+    New-ItemProperty -Path $cursorPath -Name "(Default)" -Value "Windows Default" -PropertyType String -Force | Out-Null
+    
+    Write-Log -Message "Cursor do mouse restaurado para o padrao." -Level "INFO"
+}
+catch {
+    Write-Log -Message "Erro ao restaurar o cursor do mouse: $($_.Exception.Message)" -Level "ERROR"
+}
+
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "      WORKSPACE LIMPO COM SUCESSO       " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
+
