@@ -84,6 +84,21 @@ try {
     Write-Host "[FAIL] Erro no OnLogoff: $($_.Exception.Message)" -ForegroundColor Red
 }
 
+# ==============================================================================
+# REGISTRO DA TAREFA: DESLIGAMENTO AUTOMÁTICO (16:40)
+# ==============================================================================
+Write-Host "Registrando tarefa de Desligamento Automatico (16:40)..." -ForegroundColor Cyan
+
+$Principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Days 0)
+
+$ActionShutdown = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-WindowStyle Hidden -ExecutionPolicy Bypass -File C:\LABCONTROL\Scripts\Tasks\AutoShutdown.ps1"
+$TriggerShutdown = New-ScheduledTaskTrigger -Daily -At "16:40"
+
+Register-ScheduledTask -TaskName "LABCONTROL_AutoShutdown" -Action $ActionShutdown -Trigger $TriggerShutdown -Principal $Principal -Settings $Settings -Force | Out-Null
+
+Write-Host "[ OK ] Tarefa AutoShutdown criada." -ForegroundColor Green
+
 Write-Host "`n========================================" -ForegroundColor Cyan
 Write-Host "     TODAS AS TAREFAS CONFIGURADAS      " -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
